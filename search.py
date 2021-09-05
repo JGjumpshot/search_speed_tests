@@ -1,8 +1,9 @@
 import random
 
-SEED_VALUE = 100
+
+SEED_VALUE = int( 100 * random.random())
 # random.seed(SEED_VALUE)
-lyst = random.sample(range(1000000), k=SEED_VALUE)
+lyst = sorted(random.sample(range(1000000), k=SEED_VALUE))
 #test.sort()
 print(sorted(lyst), '\n')
 
