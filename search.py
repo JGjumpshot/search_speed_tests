@@ -19,7 +19,10 @@ def linear_search(my_list, target):
 
 def main():
     print(lyst, '\n')
-    print(linear_search(lyst, 23455))
+    linear_search(lyst, lyst[-1])
+    linear_search(lyst, lyst[0])
+    linear_search(lyst, (lyst // 2) - 1)
+    linear_search(lyst, lyst * 4)
 
 if __name__ == "__main__":
     main()
