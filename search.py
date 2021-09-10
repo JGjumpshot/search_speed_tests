@@ -11,7 +11,7 @@ def linear_search(my_list, target):
         if my_list[i] == target:
             return True
 
-        return False
+    return False
 # def binary_search(lyst, target):
 
 # def jump_search(lyst, target):
@@ -19,7 +19,7 @@ def linear_search(my_list, target):
 def main():
     #print(lyst, '\n')
     print((len(lyst) / 2))
-    linear_search(lyst, lyst[-1])
+    print(linear_search(lyst, lyst[-1]))
     linear_search(lyst, lyst[0])
     print(len(lyst))
     linear_search(lyst, len(lyst) // 2)
