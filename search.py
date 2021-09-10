@@ -17,13 +17,16 @@ def binary_search(my_list, target):
     new_list = []
     middle = (len(my_list) // 2) - 1
 
-    print(f"{my_list}\n{my_list[middle]} \n{my_list[middle:]}")
+    print(f"List: {my_list}\nMiddle: {my_list[middle]} \nSliceUp: {my_list[middle:]}")
     if (target > my_list[middle]):
         new_list.append(my_list[middle:])
+        print(new_list)
         return True
     else:
+        new_list.append(my_list[:middle])
+        print(f"New List: {new_list}")
         return False
-print(binary_search([1,2,3,4,5,6,7,8], 5))
+print(binary_search([1,2,3,4,5,6,7,8], 3))
 
 
 # def jump_search(lyst, target):
