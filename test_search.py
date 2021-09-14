@@ -1,5 +1,5 @@
 import pytest
-from search import linear_search ,binary_search
+from search import linear_search, binary_search
 #, binary_search, jump_search
 from random import seed, sample
 from time import perf_counter
@@ -20,9 +20,9 @@ def test_search_at_end():
     data = next(gen)
 
     start = time.perf_counter()
-    # result = binary_search(data, data[-1])
+    result = binary_search(data, data[-1])
     fastest = time.perf_counter() - start
-    #assert result
+    assert result
 
     start = time.perf_counter()
     result = linear_search(data, data[-1])
@@ -43,8 +43,8 @@ def test_search_at_beginning():
     result = linear_search(data, data[0])
     assert result
 
-    # result = binary_search(data, data[0])
-    #assert result
+    result = binary_search(data, data[0])
+    assert result
 
     #result = jump_search(data, data[0])
     #assert result
@@ -56,7 +56,7 @@ def test_search_at_middle():
     result = linear_search(data, data[(DATA_SIZE // 2) - 1])
     assert result
 
-    # result = binary_search(data, data[(DATA_SIZE // 2) - 1])
+    result = binary_search(data, data[(DATA_SIZE // 2) - 1])
     assert result
 
     #result = jump_search(data, data[(DATA_SIZE // 2) - 1])
@@ -69,8 +69,8 @@ def test_search_not_found():
     result = linear_search(data, DATA_SIZE * 4)
     assert not result
 
-    # result = binary_search(data, DATA_SIZE * 4)
-    #assert not result
+    result = binary_search(data, DATA_SIZE * 4)
+    assert not result
 
     #result = jump_search(data, DATA_SIZE * 4)
     #assert not result

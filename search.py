@@ -1,32 +1,32 @@
 import random
 
-SEED_VALUE = int( 100 * random.random())
+SEED_VALUE = int(100 * random.random())
 # random.seed(SEED_VALUE)
 lyst = sorted(random.sample(range(1000000), k=SEED_VALUE))
-#test.sort()
-print(sorted(lyst), '\n')
-print(len(sorted(lyst)), '\n')
+# test.sort()
+# print(sorted(lyst), '\n')
+# print(len(sorted(lyst)), '\n')
+
+
 def linear_search(my_list, target):
     for i in range(len(my_list)):
         if my_list[i] == target:
             return True
 
     return False
-#TODO: Need to test if target < my_list[middle]
-def binary_search(my_list, target):
-    new_list = []
-    middle = (len(my_list) // 2) - 1
 
-    print(f"List: {my_list}\nMiddle: {my_list[middle]} \nSliceUp: {my_list[middle:]}")
-    if (target > my_list[middle]):
-        new_list.append(my_list[middle:])
-        print(new_list)
-        return True
-    else:
-        new_list.append(my_list[:middle])
-        print(f"New List: {new_list}")
+
+def binary_search(my_list, target):
+    middle = (len(my_list) // 2)
+    # print(f"List: {my_list}\nMiddle: {my_list[middle]} \nSlice: {my_list[middle + 1:]}")
+    if len(my_list) == 0:
         return False
-print(binary_search([1,2,3,4,5,6,7,8], 3))
+    elif target == my_list[middle]:
+        return True
+    elif target > my_list[middle]:
+        return binary_search(my_list[middle + 1:], target)
+    elif target < my_list[middle]:
+        return binary_search(my_list[:middle], target)
 
 
 # def jump_search(lyst, target):
@@ -38,5 +38,8 @@ def main():
     linear_search(lyst, len(lyst) // 2)
     linear_search(lyst, lyst * 4)
     binary_search(lyst, lyst[-1])
+    binary_search(lyst, lyst[0])
+
+
 if __name__ == "__main__":
     main()
