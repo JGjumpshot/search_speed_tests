@@ -39,7 +39,7 @@ def main():
     linear_search(lyst, lyst * 4)
     binary_search(lyst, lyst[-1])
     binary_search(lyst, lyst[0])
-
-
+    binary_search(lyst, len(lyst) // 2)
+    binary_search(lyst, lyst * 4)
 if __name__ == "__main__":
     main()
