@@ -45,8 +45,8 @@ def test_search_at_beginning():
     result = binary_search(data, data[0])
     assert result
 
-    #result = jump_search(data, data[0])
-    #assert result
+    result = jump_search(data, data[0])
+    assert result
 
 def test_search_at_middle():
     gen = make_data()
@@ -58,7 +58,7 @@ def test_search_at_middle():
     result = binary_search(data, data[(DATA_SIZE // 2) - 1])
     assert result
 
-    #result = jump_search(data, data[(DATA_SIZE // 2) - 1])
+    result = jump_search(data, data[(DATA_SIZE // 2) - 1])
     assert result
 
 def test_search_not_found():
@@ -71,8 +71,8 @@ def test_search_not_found():
     result = binary_search(data, DATA_SIZE * 4)
     assert not result
 
-    #result = jump_search(data, DATA_SIZE * 4)
-    #assert not result
+    result = jump_search(data, DATA_SIZE * 4)
+    assert not result
 
 def test_code_style():
     from pylint.lint import Run

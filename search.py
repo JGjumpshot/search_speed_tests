@@ -32,7 +32,7 @@ def binary_search(my_list, target):
 
 
 def jump_search(my_list, target):
-    step = math.floor(math.sqrt(len(my_list)))           
+    step = math.floor(math.sqrt(len(my_list)))
     i = 0
     while my_list[step - 1] < target:
         i = step
@@ -62,7 +62,9 @@ def main():
     binary_search(lyst, len(lyst) // 2)
     binary_search(lyst, lyst * 4)
     jump_search(lyst, lyst[-1])
-
+    jump_search(lyst, lyst[0])
+    jump_search(lyst, len(lyst) // 2)
+    jump_search(lyst, lyst * 4)
 
 
 if __name__ == "__main__":
