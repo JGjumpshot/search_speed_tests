@@ -1,5 +1,5 @@
 import pytest
-from search import linear_search, binary_search
+from search import linear_search, binary_search, jump_search
 #, binary_search, jump_search
 from random import seed, sample
 from time import perf_counter
@@ -31,10 +31,10 @@ def test_search_at_end():
     assert fastest * 10000 < slowest * 10000
 
     start = time.perf_counter()
-    #result = jump_search(data, data[-1])
+    result = jump_search(data, data[-1])
     fastest = time.perf_counter() - start
-    #assert result
-    #assert fastest * 10000 < slowest * 10000
+    assert result
+    assert fastest * 10000 < slowest * 10000
 
 def test_search_at_beginning():
     gen = make_data()

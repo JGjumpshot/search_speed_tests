@@ -1,3 +1,4 @@
+import math
 import random
 
 SEED_VALUE = int(100 * random.random())
@@ -29,7 +30,26 @@ def binary_search(my_list, target):
         return binary_search(my_list[:middle], target)
 
 
-# def jump_search(lyst, target):
+
+def jump_search(my_list, target):
+    step = math.floor(math.sqrt(len(my_list)))           
+    i = 0
+    while my_list[step - 1] < target:
+        i = step
+        step += math.floor(math.sqrt(len(my_list)))
+        if i >= len(my_list):
+            return False
+
+    while my_list[i] < target:
+        i += 1
+        if i == step:
+            return False
+
+    if my_list[i] == target:
+        return True
+    else:
+        return False
+
 
 def main():
     #print(lyst, '\n')
@@ -39,6 +59,10 @@ def main():
     linear_search(lyst, lyst * 4)
     binary_search(lyst, lyst[-1])
     binary_search(lyst, lyst[0])
+    binary_search(lyst, len(lyst) // 2)
+    binary_search(lyst, lyst * 4)
+    jump_search(lyst, lyst[-1])
+
 
 
 if __name__ == "__main__":
