@@ -1,6 +1,5 @@
 import pytest
 from search import linear_search, binary_search, jump_search
-#, binary_search, jump_search
 from random import seed, sample
 from time import perf_counter
 from math import sqrt
