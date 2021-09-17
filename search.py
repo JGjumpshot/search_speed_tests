@@ -1,5 +1,6 @@
 import math
 import random
+import time
 
 SEED_VALUE = int(100 * random.random())
 # random.seed(SEED_VALUE)
@@ -50,10 +51,14 @@ def jump_search(my_list, target):
     else:
         return False
 
-
+def stopwatch(function):
+    start = time.perf_counter()
+    function
+    stop = time.perf_counter()
+    print(stop - start)
 def main():
     #print(lyst, '\n')
-    linear_search(lyst, lyst[-1])
+    stopwatch(linear_search(lyst, lyst[-1]))
     linear_search(lyst, lyst[0])
     linear_search(lyst, len(lyst) // 2)
     linear_search(lyst, lyst * 4)
