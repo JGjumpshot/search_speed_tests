@@ -3,11 +3,7 @@ import random
 import time
 
 SEED_VALUE = int(100 * random.random())
-# random.seed(SEED_VALUE)
 lyst = sorted(random.sample(range(1000000), k=SEED_VALUE))
-# test.sort()
-# print(sorted(lyst), '\n')
-# print(len(sorted(lyst)), '\n')
 
 
 def linear_search(my_list, target):
@@ -20,56 +16,59 @@ def linear_search(my_list, target):
 
 def binary_search(my_list, target):
     middle = (len(my_list) // 2)
-    # print(f"List: {my_list}\nMiddle: {my_list[middle]} \nSlice: {my_list[middle + 1:]}")
     if len(my_list) == 0:
         return False
     elif target == my_list[middle]:
         return True
     elif target > my_list[middle]:
+        # try:
         return binary_search(my_list[middle + 1:], target)
     elif target < my_list[middle]:
         return binary_search(my_list[:middle], target)
 
-
-
 def jump_search(my_list, target):
-    step = math.floor(math.sqrt(len(my_list)))
-    i = 0
-    while my_list[step - 1] < target:
-        i = step
-        step += math.floor(math.sqrt(len(my_list)))
-        if i >= len(my_list):
+    try:
+        step = math.floor(math.sqrt(len(my_list)))
+        i = 0
+        while my_list[step - 1] < target:
+            i = step
+            step += math.floor(math.sqrt(len(my_list)))
+            if i >= len(my_list):
+                return False
+
+        while my_list[i] < target:
+            i += 1
+            if i == step:
+                return False
+
+        if my_list[i] == target:
+            return True
+        else:
             return False
+    except(IndexError) as error:
+        return f"Error is {error}"
 
-    while my_list[i] < target:
-        i += 1
-        if i == step:
-            return False
 
-    if my_list[i] == target:
-        return True
-    else:
-        return False
-
-def stopwatch(function):
+def stopwatch(function, my_list, target, my_type):
     start = time.perf_counter()
-    function
+    function(my_list, target)
     stop = time.perf_counter()
-    print(stop - start)
+    print(f"Function {function.__name__} took {stop - start} seconds to run {my_type}")
+
+
 def main():
-    #print(lyst, '\n')
-    stopwatch(linear_search(lyst, lyst[-1]))
-    linear_search(lyst, lyst[0])
-    linear_search(lyst, len(lyst) // 2)
-    linear_search(lyst, lyst * 4)
-    binary_search(lyst, lyst[-1])
-    binary_search(lyst, lyst[0])
-    binary_search(lyst, len(lyst) // 2)
-    binary_search(lyst, lyst * 4)
-    jump_search(lyst, lyst[-1])
-    jump_search(lyst, lyst[0])
-    jump_search(lyst, len(lyst) // 2)
-    jump_search(lyst, lyst * 4)
+    stopwatch(linear_search, lyst, lyst[-1], "finding end of list element")
+    stopwatch(linear_search, lyst, lyst[0], "finding the first element")
+    stopwatch(linear_search, lyst, len(lyst) // 2, "finding the middle element")
+    stopwatch(linear_search, lyst, len(lyst) * 4, "finding an index out of range")
+    stopwatch(binary_search, lyst, lyst[-1], "finding end of list element")
+    stopwatch(binary_search, lyst, lyst[0], "finding the first element")
+    stopwatch(binary_search, lyst, len(lyst) // 2, "finding the middle element")
+    stopwatch(binary_search, lyst, len(lyst) * 4, "finding an index out of range")
+    stopwatch(jump_search, lyst, lyst[-1], "finding end of list element")
+    stopwatch(jump_search, lyst, lyst[0], "finding the first element")
+    stopwatch(jump_search, lyst, len(lyst) // 2, "finding the middle element")
+    stopwatch(jump_search, lyst, len(lyst) * 4, "finding an index out of range")
 
 
 if __name__ == "__main__":
